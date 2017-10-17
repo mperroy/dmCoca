@@ -3,7 +3,7 @@
 
 clause createClause(){
   clause cnf = malloc(sizeof(clause));
-  cnf->varList = createVarList();
+  cnf->varList = malloc(sizeof(intList*));
   cnf->nbVar = 0;
   cnf->next = NULL;
   return cnf;
@@ -13,8 +13,7 @@ void addClause(clause * cnf){
   while(cnf->next != NULL){
     cnf = cnf->next;
   }
-  cnf = createClause();
-  cnf->varList = malloc(sizeof(intList*));
+  cnf->next = createClause();
 }
 
 void freeClause(clause * cnf){
