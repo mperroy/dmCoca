@@ -23,10 +23,10 @@ void addVar(clause * cnf, int var);
 
 void freeVarList(intList * varList);
 
-void uniqueIntPerVertice(clause * cnf);
+clause uniqueIntPerVertice();
 
-void uniqueRoot(clause * cnf);
+clause uniqueRoot();
 
-void atLeastOneVerticeAtK(clause * cnf, int k);
+clause atLeastOneVerticeAtK( int k);
 
-void potentialParent(clause * cnf);
+clause potentialParent();
