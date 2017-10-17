@@ -40,16 +40,21 @@ void freeVarList(intList * varList){
   free(varList);
 }
 
-void uniqueIntPerVertice(clause * cnf){
+clause uniqueIntPerVertice(){
+  
+  return NULL;
 }
 
-void uniqueRoot(clause * cnf){
+clause uniqueRoot(){
+  return NULL;
 }
 
-void atLeastOneVerticeAtK(clause * cnf, int k){
+clause atLeastOneVerticeAtK(int k){
+  return NULL;
 }
 
-void potentialParent(clause * cnf){
+clause potentialParent(){
+  return NULL;
 }
 
 int main(int argc, char ** args){
