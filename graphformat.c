@@ -1,63 +1,44 @@
-#include "graphformat.h"
+
 // include biblio pour manipuler file
 
-clause createClause(){
-  clause cnf = malloc(sizeof(clause));
-  cnf->varList = malloc(sizeof(intList*));
-  cnf->nbVar = 0;
-  cnf->next = NULL;
-  return cnf;
-}
-
-void addClause(clause * cnf){
-  while(cnf->next != NULL){
-    cnf = cnf->next;
-  }
-  cnf->next = createClause();
-}
-
-void freeClause(clause * cnf){
-  if(cnf->next != NULL)
-    freeClause(cnf->next);
-  freeVarList(cnf->varList);
-  free(cnf);
-}
-
-void addVar(clause * cnf, int var){
-  cnf->nbVar++;
-  intList * tmp = cnf->varList;
-  while(tmp->next != NULL){
-    tmp = tmp->next;
-  }
-  tmp->next = malloc(sizeof(intList*));
-  tmp->next->var = var;
-}
-
-void freeVarList(intList * varList){
-  if(varList->next != NULL)
-    freeVarList(varList->next);
-  free(varList);
-}
-
-clause uniqueIntPerVertice(){
-  
-  return NULL;
-}
-
-clause uniqueRoot(){
-  return NULL;
-}
-
-clause atLeastOneVerticeAtK(int k){
-  return NULL;
-}
-
-clause potentialParent(){
-  return NULL;
-}
-
-int main(int argc, char ** args){
+int main(int argc, char * argv[]){
   // check pour k bien reçu
   // ouverture + écriture fichier cnf retour
+
+  int k = atoi(args[1]); // vérif si bien entier
+  int nbVar = 0;
+  int nbClause = 0;
+
+  // Matrice contenant toutes les variables de nos clauses
+  int matVar[orderG()][k]; // passer tout ça à 0
+
+  // Contrainte 1
+  for(int v = 0 ; v < orderG() ; v++){
+    for(int h = 0 ; h < k ; h++){
+      matVar[v][h] = 1; // on les écrit dans le fichier ?
+    }
+  }
+
+  // Contrainte 2
+  for(int v = 0 ; v < orderG() ; v++){
+    matVar[v][0] = 1; // idem
+  }
+
+  // Contrainte 3
+  for(int v = 0 ; v < orderG() ; v++){
+    matVar[v][k] = 1; // idem
+  }
+
+  // Contrainte 4
+  for(int v = 0 ; v < orderG() ; v++){
+    for(int i = 1 ; i < k ; i++){
+      for(int u = 0 ; u < orderG() ; u++){
+	if(are_adjacent(u, v){
+	    // faux v,i vrai u,i-1
+	  }
+      }
+    }
+  }
+  
   return 0;
 }
