@@ -1,16 +1,31 @@
+#include "graphformat.h"
 
-// include biblio pour manipuler file
+int main(int argc, char * argv[]) {
 
-int main(int argc, char * argv[]){
-  // check pour k bien reçu
-  // ouverture + écriture fichier cnf retour
-
-  int k = atoi(args[1]); // vérif si bien entier
+  FILE * cnfFile = NULL;
+  //Hauteur donnée
+  int k = atoi(args[1]);
   int nbVar = 0;
   int nbClause = 0;
-
   // Matrice contenant toutes les variables de nos clauses
-  int matVar[orderG()][k]; // passer tout ça à 0
+  int matVar[orderG()][k]; 
+
+  //Vérification que la hauteur donnée est un entier
+  if(isdigit(k) == 0)
+    printf("Veuillez saisir un entier pour la hauteur");
+
+  //Ouverture du fichier résultat (ouvert en écriture seulement)
+  cnfFile = fopen("cnfFile.txt","w");
+  if(cnfFile == NULL)
+    printf("Impossible d'ouvrir le fichier");
+  
+  //Initialisation de la matrice des variables
+  //Vraiment des int les variables de la matrice ? Valeur ?
+  //Terminologie des variables à mettre dans le fichier résultat
+  for(int i = 0; i < orderG(); i++) {
+    for(int j = 0; j < k; j++)
+     matVar[i][j] = 0;
+  }
 
   // Contrainte 1
   for(int v = 0 ; v < orderG() ; v++){
@@ -39,6 +54,7 @@ int main(int argc, char * argv[]){
       }
     }
   }
-  
+  //On ferme le fichier résultat
+  fclose(cnfFile);
   return 0;
 }
