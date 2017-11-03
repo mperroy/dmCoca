@@ -35,7 +35,7 @@ int main(int argc, char * argv[]) {
       matVar = initMatrix(orderG(), k, matVar);
       
       //Initialisation de la zone de commentaire du fichier résultat
-      fputs("c\nc start with comments\nc", cnfFile);
+      fputs("c\nc start with comments\nc\n", cnfFile);
       fputs("p cnf \n", cnfFile);
 
       //Contrainte 1
@@ -76,14 +76,21 @@ int main(int argc, char * argv[]) {
 	  for(int u = 0 ; u < orderG() ; u++){
 	    if(are_adjacent(u, v){
 		//faux v,i vrai u,i-1
+		matVar[v][i] = 1;
+		matVar[u][i-1] = 1;
+		puts("-"(v+(i * orderG()))" "(u+(i-1 * orderG()))" ", cnfFile);
 	    }
 	  }
 	}
       }
      nbClause ++;
-     puts("0\n", cnfFile);
+     puts("0", cnfFile);
      }
    }
+  //On écrit le nombre de variables utilisées et le nombre de clauses
+  //34 nombre de caractère dont on doit se déplacer
+  fseek(cnfFile, 34, SEEK_SET);
+  puts(nbVar " " nbClause, cnfFile);
   //On ferme le fichier résultat
   fclose(cnfFile);
   return 0;
