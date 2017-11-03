@@ -12,3 +12,5 @@ struct intList{
   int var;
   intList* next;
 };
+
+int[][] initMatrix(int nbSommet, int hauteur);
