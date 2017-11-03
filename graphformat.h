@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "all.h"
-
+#include <ctype.h>
+#include "/test/all.h"
+/*
 struct clause{
   intList * varList;
   int nbVar;
@@ -12,5 +13,5 @@ struct intList{
   int var;
   intList* next;
 };
+*/
 
-int[][] initMatrix(int nbSommet, int hauteur);
